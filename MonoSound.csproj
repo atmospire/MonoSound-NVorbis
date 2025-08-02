@@ -62,7 +62,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-        <PackageId>NuGet.MonoSoundNVorbis</PackageId>
+        <PackageId>MonoSoundNVorbis</PackageId>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/atmospire/MonoSound-NVorbis</RepositoryUrl>
     </PropertyGroup>
