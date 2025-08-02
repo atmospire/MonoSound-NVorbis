@@ -1,61 +1,69 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <PublishReadyToRun>false</PublishReadyToRun>
-    <TieredCompilation>false</TieredCompilation>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	<Version>1.8.0.2</Version>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<Authors>John Baglio</Authors>
-	<Description>A library built for use with MonoGame DesktopGL and Android projects.
-This project allows for easy loading of SoundEffect instances without the content pipeline, along with XACT wavebank sounds.
-Additional features include streaming audio from files and applying SoLoud sound filters to sounds.
-The repository for MonoGame can be viewed at https://github.com/MonoGame/MonoGame</Description>
-	<Copyright>Copyright © John Baglio 2024</Copyright>
-	<PackageProjectUrl></PackageProjectUrl>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<RepositoryUrl>https://github.com/absoluteAquarian/MonoSound</RepositoryUrl>
-	<PackageTags>monogame;sound;sound-filters;filters;xact;audio</PackageTags>
-	<PackageReleaseNotes>Version 1.8.0.2 includes a bug fix for exceptions thrown when disposing stream instances.
-Check CHANGELOG.md for the full list of changes.</PackageReleaseNotes>
-	<GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;CA2211;CA1069;CS8618</NoWarn>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.4" />
-    <PackageReference Include="MP3SharpWithMonoFix" Version="1.0.6" />
-	<PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all" />
-	<PackageReference Include="NVorbis" Version="0.10.5" />
-	
-	<Publicize Include="MonoGame.Framework" />
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <PublishReadyToRun>false</PublishReadyToRun>
+        <TieredCompilation>false</TieredCompilation>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Version>1.8.0.2</Version>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>John Baglio</Authors>
+        <Description>A library built for use with MonoGame DesktopGL and Android projects.
+            This project allows for easy loading of SoundEffect instances without the content pipeline, along with XACT wavebank sounds.
+            Additional features include streaming audio from files and applying SoLoud sound filters to sounds.
+            The repository for MonoGame can be viewed at https://github.com/MonoGame/MonoGame
+        </Description>
+        <Copyright>Copyright © John Baglio 2024</Copyright>
+        <PackageProjectUrl></PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/absoluteAquarian/MonoSound</RepositoryUrl>
+        <PackageTags>monogame;sound;sound-filters;filters;xact;audio</PackageTags>
+        <PackageReleaseNotes>Version 1.8.0.2 includes a bug fix for exceptions thrown when disposing stream instances.
+            Check CHANGELOG.md for the full list of changes.
+        </PackageReleaseNotes>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <NoWarn>1701;1702;CA2211;CA1069;CS8618</NoWarn>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.4"/>
+        <PackageReference Include="MP3SharpWithMonoFix" Version="1.0.6"/>
+        <PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all"/>
+        <PackageReference Include="NVorbis" Version="0.10.5"/>
 
-	<!-- Certain members should not be publicized, mostly in cases of
-         accidental overlap. -->
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.DynamicSoundEffectInstance.BufferNeeded" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformCreate" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformPlay" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformPause" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformResume" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformStop" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.Dispose" />
-	<DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformDispose" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
-	<Compile Remove="MonoSound.Tests/**" />
-	<Content Remove="MonoSound.Tests/**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="LICENSE.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LICENSE.txt" />
-  </ItemGroup>
+        <Publicize Include="MonoGame.Framework"/>
+
+        <!-- Certain members should not be publicized, mostly in cases of
+             accidental overlap. -->
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.DynamicSoundEffectInstance.BufferNeeded"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformCreate"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformPlay"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformPause"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformResume"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformStop"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.Dispose"/>
+        <DoNotPublicize Include="MonoGame.Framework:Microsoft.Xna.Framework.Audio.SoundEffectInstance.PlatformDispose"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="MonoSound.Tests/**"/>
+        <Content Remove="MonoSound.Tests/**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="LICENSE.txt"/>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="LICENSE.txt"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>NuGet.MonoSoundNVorbis</PackageId>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/atmospire/MonoSound-NVorbis</RepositoryUrl>
+    </PropertyGroup>
 </Project>
